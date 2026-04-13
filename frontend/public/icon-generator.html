@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate CHDS PWA Icons</title></head>
+<body>
+<h3 style="font-family:sans-serif">Generating icons... check your Downloads folder</h3>
+<script>
+  function generate(size) {
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext('2d');
+
+    // Black background
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, size, size);
+
+    // Rounded rect white box
+    const pad = size * 0.18;
+    const boxSize = size - pad * 2;
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    const r = boxSize * 0.15;
+    ctx.moveTo(pad + r, pad);
+    ctx.lineTo(pad + boxSize - r, pad);
+    ctx.quadraticCurveTo(pad + boxSize, pad, pad + boxSize, pad + r);
+    ctx.lineTo(pad + boxSize, pad + boxSize - r);
+    ctx.quadraticCurveTo(pad + boxSize, pad + boxSize, pad + boxSize - r, pad + boxSize);
+    ctx.lineTo(pad + r, pad + boxSize);
+    ctx.quadraticCurveTo(pad, pad + boxSize, pad, pad + boxSize - r);
+    ctx.lineTo(pad, pad + r);
+    ctx.quadraticCurveTo(pad, pad, pad + r, pad);
+    ctx.closePath();
+    ctx.fill();
+
+    // CH text
+    ctx.fillStyle = '#000000';
+    ctx.font = `bold ${Math.floor(size * 0.28)}px Arial, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('CH', size / 2, size / 2);
+
+    return canvas.toDataURL('image/png');
+  }
+
+  [192, 512].forEach(size => {
+    const dataUrl = generate(size);
+    const a = document.createElement('a');
+    a.download = `icon-${size}.png`;
+    a.href = dataUrl;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+
+  document.body.innerHTML += '<p style="font-family:sans-serif;color:green">✓ Two icons downloaded: icon-192.png and icon-512.png<br>Move them to: <strong>frontend/public/</strong></p>';
+</script>
+</body>
+</html>

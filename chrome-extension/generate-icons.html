@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Extension Icons</title></head>
+<body style="font-family:sans-serif;background:#000;color:#fff;padding:24px;">
+<h3>Generating CHDS Chrome Extension Icons...</h3>
+<p style="color:#888;font-size:13px;">Two files will download automatically. Move them to the <strong style="color:#fff">chrome-extension/</strong> folder.</p>
+<script>
+  function generate(size) {
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext('2d');
+
+    // Black background
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, size, size);
+
+    // White "CH" text
+    ctx.fillStyle = '#ffffff';
+    ctx.font = `bold ${Math.floor(size * 0.45)}px Arial, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('CH', size / 2, size / 2 + 1);
+
+    const a = document.createElement('a');
+    a.download = `icon${size}.png`;
+    a.href = canvas.toDataURL('image/png');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  generate(16);
+  setTimeout(() => generate(48), 300);
+
+  setTimeout(() => {
+    document.body.innerHTML += `
+      <div style="background:#0a1a0a;border:1px solid rgba(74,222,128,0.3);border-radius:10px;padding:16px;margin-top:20px;">
+        <p style="color:#4ade80;font-size:14px;font-weight:600;margin:0 0 8px">✓ Done! Two files downloaded:</p>
+        <p style="color:#888;font-size:12px;margin:0">icon16.png and icon48.png</p>
+        <p style="color:#888;font-size:12px;margin:8px 0 0">Move both files into the <strong style="color:#fff">chrome-extension/</strong> folder, then re-enable icons in manifest.json</p>
+      </div>`;
+  }, 800);
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHDS CRM</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { width: 300px; background: #000; color: #fff; font-family: Inter, system-ui, sans-serif; padding: 16px; }
+    .header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+    .logo { width: 28px; height: 28px; background: #fff; color: #000; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; border-radius: 4px; flex-shrink: 0; }
+    .title { font-size: 13px; font-weight: 600; }
+    .subtitle { font-size: 11px; color: #888; }
+    .divider { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 16px; }
+    label { display: block; font-size: 11px; color: #888; margin-bottom: 6px; }
+    input { width: 100%; background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 12px; outline: none; margin-bottom: 10px; font-family: inherit; }
+    input:focus { border-color: rgba(255,255,255,0.3); }
+    .btn-primary { width: 100%; background: #fff; color: #000; font-weight: 600; border: none; border-radius: 8px; padding: 9px; font-size: 12px; cursor: pointer; font-family: inherit; }
+    .btn-primary:hover { background: #e5e5e5; }
+    .btn-secondary { width: 100%; background: transparent; color: #fff; font-weight: 500; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 9px; font-size: 12px; cursor: pointer; margin-top: 8px; font-family: inherit; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.05); }
+    .status-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .green-dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; flex-shrink: 0; }
+    .user-name { font-size: 13px; font-weight: 600; }
+    .user-email { font-size: 11px; color: #888; }
+    .hint { font-size: 11px; color: #888; margin-bottom: 12px; line-height: 1.4; }
+    .error-msg { color: #f87171; font-size: 11px; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo.svg" alt="Logo" class="logo" style="background: none; padding: 0" />
+    <div>
+      <div class="title">CH Digital Solutions</div>
+      <div class="subtitle">LinkedIn CRM</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div id="app"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
