@@ -4,7 +4,7 @@
 // never lose access even after extension reload
 // ============================================================
 
-const API = 'http://localhost:5000/api';
+const API = 'https://crm-chds.onrender.com/api';
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'login') {
